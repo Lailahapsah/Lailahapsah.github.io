@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Romantis</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #f0f0f0, #a7c7e7, #001f54, #f0f0f0);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .slide-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .slide {
+            display: none;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .slide h1 {
+            font-size: 2.5em;
+            color: #001f54;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .slide p {
+            font-size: 1.2em;
+            color: #333;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .navigation {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .nav-button {
+            width: 50px;
+            height: 50px;
+            background: #001f54;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: #003d99;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <h1>Selamat Tidur, Cintaku</h1>
+            <p>Mimpi indah ya, sayang. Semoga esok lebih indah dari hari ini 🌙</p>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+            <h1>Reminder Manis for my luvv</h1>
+            <p>Aku sangat bersyukur memiliki kamu dalam hidupku ❤️</p>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+            <h1>❤️my luvv❤️</h1>
+            <p>Setiap hari bersamamu adalah petualangan baru yang indah ✨</p>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide">
+            <h1>Jawab jujur ya manis</h1>
+            <p>Apa hal paling berkesan yang pernah kita lakukan bersama? 🤔</p>
+        </div>
+        <!-- Slide 5 -->
+        <div class="slide">
+            <h1>Selamat Malam, Cintaku</h1>
+            <p>Sampai jumpa di mimpi, sayang 🌙</p>
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="navigation">
+            <button class="nav-button" onclick="prevSlide()">&#8249;</button>
+            <button class="nav-button" onclick="nextSlide()">&#8250;</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) slide.classList.add('active');
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+    </script>
+</body>
+</html>
